@@ -4,6 +4,7 @@ html, body {
 }
 canvas {
   display: inline-block;
+  width: 100%;
 }
 
 div {
