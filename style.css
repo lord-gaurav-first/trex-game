@@ -9,4 +9,5 @@ canvas {
 div {
   height: 800;
   width: 1600;
+  display: inline-block;
 }
