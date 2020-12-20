@@ -70,17 +70,18 @@ function setup() {
 
 function draw() {
   //trex.debug = true;
-  background("blue");
+  background(140);
   text("Score: "+ score, 500,50);
   if (gameState===PLAY){
     score = score + Math.round(getFrameRate()/60);
     ground.velocityX = -(6 + 3*score/100);
 
-    if(keyDown("space") && trex.y >= 159) {
+    if((keyDown("space") || touches.length > 0) && trex.y >= 159) {
       trex.velocityY = -12;
+      touches = [];
     }
 
-    trex.velocityY = trex.velocityY + 0.8
+    trex.velocityY = trex.velocityY + 0.65;
 
     if (ground.x < 0){
       ground.x = ground.width/2;
@@ -111,8 +112,9 @@ function draw() {
     obstaclesGroup.setLifetimeEach(-1);
     cloudsGroup.setLifetimeEach(-1);
 
-    if(mousePressedOver(restart)) {
+    if(mousePressedOver(restart) || touches.length > 0) {
       reset();
+      touches = [];
     }
   }
 
